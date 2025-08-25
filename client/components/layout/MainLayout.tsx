@@ -120,10 +120,10 @@ export default function MainLayout({ children }: MainLayoutProps) {
                 </div>
                 <div className="flex items-center gap-2">
                   <Button variant="outline" size="sm" asChild>
-                    <a href="/tenant/dashboard">Tenant Portal</a>
+                    <a href="/tenant/dashboard">🏠 Tenant Portal</a>
                   </Button>
                   <Button variant="outline" size="sm">
-                    Admin
+                    👤 Admin
                   </Button>
                 </div>
               </div>
