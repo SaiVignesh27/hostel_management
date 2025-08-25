@@ -69,9 +69,7 @@ export default function Login() {
             <Building2 className="h-8 w-8" />
           </div>
           <h1 className="text-3xl font-bold tracking-tight">HostelPro</h1>
-          <p className="text-muted-foreground mt-2">
-            Hostel Management System
-          </p>
+          <p className="text-muted-foreground mt-2">Hostel Management System</p>
         </div>
 
         <Card className="border-0 shadow-xl">
@@ -82,19 +80,19 @@ export default function Login() {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <Tabs value={activeTab} onValueChange={(value) => setActiveTab(value as "admin" | "tenant")} className="w-full">
+            <Tabs
+              value={activeTab}
+              onValueChange={(value) =>
+                setActiveTab(value as "admin" | "tenant")
+              }
+              className="w-full"
+            >
               <TabsList className="grid w-full grid-cols-2 mb-6">
-                <TabsTrigger 
-                  value="admin" 
-                  className="flex items-center gap-2"
-                >
+                <TabsTrigger value="admin" className="flex items-center gap-2">
                   <Lock className="h-4 w-4" />
                   Admin
                 </TabsTrigger>
-                <TabsTrigger 
-                  value="tenant"
-                  className="flex items-center gap-2"
-                >
+                <TabsTrigger value="tenant" className="flex items-center gap-2">
                   <User className="h-4 w-4" />
                   Tenant
                 </TabsTrigger>
@@ -120,7 +118,10 @@ export default function Login() {
             </Tabs>
 
             <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+              <form
+                onSubmit={form.handleSubmit(onSubmit)}
+                className="space-y-4"
+              >
                 <FormField
                   control={form.control}
                   name="email"
@@ -174,12 +175,10 @@ export default function Login() {
                   </Button>
                 </div>
 
-                <Button 
-                  type="submit" 
-                  className="w-full" 
-                  disabled={isLoading}
-                >
-                  {isLoading ? "Signing in..." : `Sign in as ${activeTab === "admin" ? "Admin" : "Tenant"}`}
+                <Button type="submit" className="w-full" disabled={isLoading}>
+                  {isLoading
+                    ? "Signing in..."
+                    : `Sign in as ${activeTab === "admin" ? "Admin" : "Tenant"}`}
                 </Button>
               </form>
             </Form>

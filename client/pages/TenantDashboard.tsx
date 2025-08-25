@@ -1,5 +1,11 @@
 import { useState } from "react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -164,7 +170,8 @@ const tenantData = {
 
 export default function TenantDashboard() {
   const [activeTab, setActiveTab] = useState("overview");
-  const { personal, room, payments, meals, laundry, requests, notifications } = tenantData;
+  const { personal, room, payments, meals, laundry, requests, notifications } =
+    tenantData;
 
   const getStatusColor = (status: string) => {
     switch (status) {
@@ -183,7 +190,11 @@ export default function TenantDashboard() {
   };
 
   const getInitials = (name: string) => {
-    return name.split(' ').map(n => n[0]).join('').toUpperCase();
+    return name
+      .split(" ")
+      .map((n) => n[0])
+      .join("")
+      .toUpperCase();
   };
 
   return (
@@ -197,17 +208,21 @@ export default function TenantDashboard() {
               <AvatarFallback>{getInitials(personal.name)}</AvatarFallback>
             </Avatar>
             <div>
-              <h1 className="text-lg font-semibold">Welcome back, {personal.name}</h1>
-              <p className="text-sm text-muted-foreground">Room {room.number} • {room.type}</p>
+              <h1 className="text-lg font-semibold">
+                Welcome back, {personal.name}
+              </h1>
+              <p className="text-sm text-muted-foreground">
+                Room {room.number} • {room.type}
+              </p>
             </div>
           </div>
           <div className="ml-auto flex items-center space-x-4">
             <Button variant="outline" size="sm" className="gap-2">
               <Bell className="h-4 w-4" />
               Notifications
-              {notifications.filter(n => !n.read).length > 0 && (
+              {notifications.filter((n) => !n.read).length > 0 && (
                 <Badge variant="destructive" className="ml-1 px-1 py-0 text-xs">
-                  {notifications.filter(n => !n.read).length}
+                  {notifications.filter((n) => !n.read).length}
                 </Badge>
               )}
             </Button>
@@ -224,11 +239,15 @@ export default function TenantDashboard() {
         <div className="grid gap-4 md:grid-cols-4">
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Current Bill</CardTitle>
+              <CardTitle className="text-sm font-medium">
+                Current Bill
+              </CardTitle>
               <DollarSign className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">₹{payments.current.total.toLocaleString()}</div>
+              <div className="text-2xl font-bold">
+                ₹{payments.current.total.toLocaleString()}
+              </div>
               <p className="text-xs text-muted-foreground">
                 Due: {new Date(payments.current.dueDate).toLocaleDateString()}
               </p>
@@ -237,12 +256,19 @@ export default function TenantDashboard() {
 
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Stay Duration</CardTitle>
+              <CardTitle className="text-sm font-medium">
+                Stay Duration
+              </CardTitle>
               <Calendar className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">
-                {Math.floor((new Date().getTime() - new Date(personal.joiningDate).getTime()) / (1000 * 60 * 60 * 24))} days
+                {Math.floor(
+                  (new Date().getTime() -
+                    new Date(personal.joiningDate).getTime()) /
+                    (1000 * 60 * 60 * 24),
+                )}{" "}
+                days
               </div>
               <p className="text-xs text-muted-foreground">
                 Since {new Date(personal.joiningDate).toLocaleDateString()}
@@ -252,12 +278,16 @@ export default function TenantDashboard() {
 
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Meals This Week</CardTitle>
+              <CardTitle className="text-sm font-medium">
+                Meals This Week
+              </CardTitle>
               <UtensilsCrossed className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">
-                {meals.weeklyCount.breakfast + meals.weeklyCount.lunch + meals.weeklyCount.dinner}
+                {meals.weeklyCount.breakfast +
+                  meals.weeklyCount.lunch +
+                  meals.weeklyCount.dinner}
               </div>
               <p className="text-xs text-muted-foreground">
                 {meals.preference === "veg" ? "Vegetarian" : "Non-Vegetarian"}
@@ -267,12 +297,14 @@ export default function TenantDashboard() {
 
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Active Requests</CardTitle>
+              <CardTitle className="text-sm font-medium">
+                Active Requests
+              </CardTitle>
               <MessageCircle className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">
-                {requests.filter(r => r.status !== "resolved").length}
+                {requests.filter((r) => r.status !== "resolved").length}
               </div>
               <p className="text-xs text-muted-foreground">
                 Pending resolution
@@ -282,7 +314,11 @@ export default function TenantDashboard() {
         </div>
 
         {/* Main Content */}
-        <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
+        <Tabs
+          value={activeTab}
+          onValueChange={setActiveTab}
+          className="space-y-6"
+        >
           <TabsList className="grid w-full grid-cols-5">
             <TabsTrigger value="overview" className="gap-2">
               <Home className="h-4 w-4" />
@@ -340,7 +376,7 @@ export default function TenantDashboard() {
                       </div>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-center justify-between">
                     <Badge className={getStatusColor(payments.current.status)}>
                       {payments.current.status.toUpperCase()}
@@ -373,7 +409,9 @@ export default function TenantDashboard() {
                       {meals.plan.includes("breakfast") ? (
                         <CheckCircle className="h-5 w-5 text-success" />
                       ) : (
-                        <div className="text-sm text-muted-foreground">Not subscribed</div>
+                        <div className="text-sm text-muted-foreground">
+                          Not subscribed
+                        </div>
                       )}
                     </div>
 
@@ -387,7 +425,9 @@ export default function TenantDashboard() {
                       {meals.plan.includes("lunch") ? (
                         <CheckCircle className="h-5 w-5 text-success" />
                       ) : (
-                        <div className="text-sm text-muted-foreground">Not subscribed</div>
+                        <div className="text-sm text-muted-foreground">
+                          Not subscribed
+                        </div>
                       )}
                     </div>
 
@@ -401,7 +441,9 @@ export default function TenantDashboard() {
                       {meals.plan.includes("dinner") ? (
                         <CheckCircle className="h-5 w-5 text-success" />
                       ) : (
-                        <div className="text-sm text-muted-foreground">Not subscribed</div>
+                        <div className="text-sm text-muted-foreground">
+                          Not subscribed
+                        </div>
                       )}
                     </div>
                   </div>
@@ -412,9 +454,7 @@ export default function TenantDashboard() {
               <Card>
                 <CardHeader>
                   <CardTitle>Recent Notifications</CardTitle>
-                  <CardDescription>
-                    Latest updates and alerts
-                  </CardDescription>
+                  <CardDescription>Latest updates and alerts</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-3">
@@ -434,7 +474,9 @@ export default function TenantDashboard() {
                           )}
                         </div>
                         <div className="flex-1 space-y-1">
-                          <div className="font-medium text-sm">{notification.title}</div>
+                          <div className="font-medium text-sm">
+                            {notification.title}
+                          </div>
                           <div className="text-sm text-muted-foreground">
                             {notification.message}
                           </div>
@@ -452,25 +494,35 @@ export default function TenantDashboard() {
               <Card>
                 <CardHeader>
                   <CardTitle>Quick Actions</CardTitle>
-                  <CardDescription>
-                    Frequently used services
-                  </CardDescription>
+                  <CardDescription>Frequently used services</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="grid grid-cols-2 gap-3">
-                    <Button variant="outline" className="h-auto p-4 flex flex-col gap-2">
+                    <Button
+                      variant="outline"
+                      className="h-auto p-4 flex flex-col gap-2"
+                    >
                       <Wrench className="h-6 w-6" />
                       <span className="text-sm">Maintenance Request</span>
                     </Button>
-                    <Button variant="outline" className="h-auto p-4 flex flex-col gap-2">
+                    <Button
+                      variant="outline"
+                      className="h-auto p-4 flex flex-col gap-2"
+                    >
                       <Shirt className="h-6 w-6" />
                       <span className="text-sm">Laundry Service</span>
                     </Button>
-                    <Button variant="outline" className="h-auto p-4 flex flex-col gap-2">
+                    <Button
+                      variant="outline"
+                      className="h-auto p-4 flex flex-col gap-2"
+                    >
                       <MessageCircle className="h-6 w-6" />
                       <span className="text-sm">File Complaint</span>
                     </Button>
-                    <Button variant="outline" className="h-auto p-4 flex flex-col gap-2">
+                    <Button
+                      variant="outline"
+                      className="h-auto p-4 flex flex-col gap-2"
+                    >
                       <UtensilsCrossed className="h-6 w-6" />
                       <span className="text-sm">Meal Preferences</span>
                     </Button>
@@ -513,7 +565,7 @@ export default function TenantDashboard() {
                       </div>
                     </div>
                   </div>
-                  
+
                   <div className="space-y-2">
                     <Button className="w-full gap-2">
                       <CreditCard className="h-4 w-4" />
@@ -535,11 +587,15 @@ export default function TenantDashboard() {
                 <CardContent>
                   <div className="space-y-3">
                     {payments.history.map((payment, index) => (
-                      <div key={index} className="flex items-center justify-between p-3 border rounded-lg">
+                      <div
+                        key={index}
+                        className="flex items-center justify-between p-3 border rounded-lg"
+                      >
                         <div>
                           <div className="font-medium">{payment.month}</div>
                           <div className="text-sm text-muted-foreground">
-                            Paid on {new Date(payment.paidDate).toLocaleDateString()}
+                            Paid on{" "}
+                            {new Date(payment.paidDate).toLocaleDateString()}
                           </div>
                         </div>
                         <div className="text-right">
@@ -563,18 +619,24 @@ export default function TenantDashboard() {
               <Card>
                 <CardHeader>
                   <CardTitle>Meal Services</CardTitle>
-                  <CardDescription>Your current meal plan and preferences</CardDescription>
+                  <CardDescription>
+                    Your current meal plan and preferences
+                  </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="flex items-center justify-between">
                     <span>Dietary Preference</span>
                     <Badge variant="outline">
-                      {meals.preference === "veg" ? "Vegetarian" : "Non-Vegetarian"}
+                      {meals.preference === "veg"
+                        ? "Vegetarian"
+                        : "Non-Vegetarian"}
                     </Badge>
                   </div>
-                  
+
                   <div className="space-y-2">
-                    <span className="text-sm font-medium">Subscribed Meals</span>
+                    <span className="text-sm font-medium">
+                      Subscribed Meals
+                    </span>
                     <div className="flex gap-2">
                       {meals.plan.map((meal) => (
                         <Badge key={meal} variant="default">
@@ -585,7 +647,9 @@ export default function TenantDashboard() {
                   </div>
 
                   <div className="space-y-2">
-                    <span className="text-sm font-medium">This Week's Count</span>
+                    <span className="text-sm font-medium">
+                      This Week's Count
+                    </span>
                     <div className="space-y-1">
                       <div className="flex justify-between">
                         <span>Breakfast</span>
@@ -617,18 +681,28 @@ export default function TenantDashboard() {
                 <CardContent className="space-y-4">
                   {laundry.currentOrders.length > 0 && (
                     <div>
-                      <span className="text-sm font-medium">Current Orders</span>
+                      <span className="text-sm font-medium">
+                        Current Orders
+                      </span>
                       {laundry.currentOrders.map((order) => (
-                        <div key={order.id} className="mt-2 p-3 border rounded-lg">
+                        <div
+                          key={order.id}
+                          className="mt-2 p-3 border rounded-lg"
+                        >
                           <div className="flex justify-between items-start">
                             <div>
-                              <div className="font-medium">{order.type} Wash</div>
+                              <div className="font-medium">
+                                {order.type} Wash
+                              </div>
                               <div className="text-sm text-muted-foreground">
-                                {order.items} items • Picked up {new Date(order.pickupDate).toLocaleDateString()}
+                                {order.items} items • Picked up{" "}
+                                {new Date(
+                                  order.pickupDate,
+                                ).toLocaleDateString()}
                               </div>
                             </div>
                             <Badge className={getStatusColor(order.status)}>
-                              {order.status.replace('_', ' ')}
+                              {order.status.replace("_", " ")}
                             </Badge>
                           </div>
                         </div>
@@ -652,7 +726,9 @@ export default function TenantDashboard() {
                 <div className="flex items-center justify-between">
                   <div>
                     <CardTitle>Service Requests</CardTitle>
-                    <CardDescription>Track your maintenance and complaint requests</CardDescription>
+                    <CardDescription>
+                      Track your maintenance and complaint requests
+                    </CardDescription>
                   </div>
                   <Button className="gap-2">
                     <Plus className="h-4 w-4" />
@@ -669,17 +745,20 @@ export default function TenantDashboard() {
                           <div className="flex items-center gap-2">
                             <div className="font-medium">{request.title}</div>
                             <Badge variant="outline">{request.type}</Badge>
-                            <Badge variant="outline">{request.priority} priority</Badge>
+                            <Badge variant="outline">
+                              {request.priority} priority
+                            </Badge>
                           </div>
                           <div className="text-sm text-muted-foreground">
                             {request.description}
                           </div>
                           <div className="text-xs text-muted-foreground">
-                            Submitted on {new Date(request.date).toLocaleDateString()}
+                            Submitted on{" "}
+                            {new Date(request.date).toLocaleDateString()}
                           </div>
                         </div>
                         <Badge className={getStatusColor(request.status)}>
-                          {request.status.replace('_', ' ')}
+                          {request.status.replace("_", " ")}
                         </Badge>
                       </div>
                     </div>
@@ -696,7 +775,9 @@ export default function TenantDashboard() {
               <Card>
                 <CardHeader>
                   <CardTitle>Personal Information</CardTitle>
-                  <CardDescription>Your personal details and contact information</CardDescription>
+                  <CardDescription>
+                    Your personal details and contact information
+                  </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="flex items-center space-x-4">
@@ -708,7 +789,9 @@ export default function TenantDashboard() {
                     </Avatar>
                     <div>
                       <div className="font-medium text-lg">{personal.name}</div>
-                      <div className="text-sm text-muted-foreground">{personal.occupation}</div>
+                      <div className="text-sm text-muted-foreground">
+                        {personal.occupation}
+                      </div>
                     </div>
                   </div>
 
@@ -741,7 +824,9 @@ export default function TenantDashboard() {
               <Card>
                 <CardHeader>
                   <CardTitle>Room Information</CardTitle>
-                  <CardDescription>Details about your accommodation</CardDescription>
+                  <CardDescription>
+                    Details about your accommodation
+                  </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="space-y-3">
@@ -751,7 +836,9 @@ export default function TenantDashboard() {
                     </div>
                     <div className="flex items-center space-x-3">
                       <MapPin className="h-4 w-4 text-muted-foreground" />
-                      <span>{room.type} • Floor {room.floor}</span>
+                      <span>
+                        {room.type} • Floor {room.floor}
+                      </span>
                     </div>
                     <div className="flex items-center space-x-3">
                       <DollarSign className="h-4 w-4 text-muted-foreground" />
@@ -759,7 +846,10 @@ export default function TenantDashboard() {
                     </div>
                     <div className="flex items-center space-x-3">
                       <Calendar className="h-4 w-4 text-muted-foreground" />
-                      <span>Check-in: {new Date(room.checkInDate).toLocaleDateString()}</span>
+                      <span>
+                        Check-in:{" "}
+                        {new Date(room.checkInDate).toLocaleDateString()}
+                      </span>
                     </div>
                   </div>
 

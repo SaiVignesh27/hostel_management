@@ -35,7 +35,14 @@ const App = () => (
           <Route path="/login" element={<Login />} />
 
           {/* Protected Routes with Layout */}
-          <Route path="/dashboard" element={<MainLayout><Dashboard /></MainLayout>} />
+          <Route
+            path="/dashboard"
+            element={
+              <MainLayout>
+                <Dashboard />
+              </MainLayout>
+            }
+          />
           <Route
             path="/tenants"
             element={

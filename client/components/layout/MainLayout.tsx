@@ -129,9 +129,7 @@ export default function MainLayout({ children }: MainLayoutProps) {
               </div>
             </div>
           </header>
-          <div className="flex-1 p-4">
-            {children || <Outlet />}
-          </div>
+          <div className="flex-1 p-4">{children || <Outlet />}</div>
         </main>
       </div>
     </SidebarProvider>

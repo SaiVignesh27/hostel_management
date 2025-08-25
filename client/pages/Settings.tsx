@@ -1,5 +1,11 @@
 import { useState } from "react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -67,7 +73,7 @@ export default function Settings() {
     timezone: "Asia/Kolkata",
     currency: "INR",
     language: "en",
-    
+
     // Notification Settings
     emailNotifications: true,
     smsNotifications: true,
@@ -75,34 +81,34 @@ export default function Settings() {
     tenantNotifications: true,
     paymentReminders: true,
     maintenanceAlerts: true,
-    
+
     // Security Settings
     twoFactorAuth: false,
     sessionTimeout: 30,
     passwordExpiry: 90,
     loginAttempts: 5,
-    
+
     // System Settings
     autoBackup: true,
     backupFrequency: "daily",
     darkMode: false,
     dataRetention: 365,
-    
+
     // Pricing Settings
     defaultRent: 8000,
     securityDepositMultiplier: 2,
     latePaymentFee: 100,
-    
+
     // Meal Settings
     breakfastPrice: 50,
     lunchPrice: 80,
     dinnerPrice: 80,
-    
+
     // Laundry Settings
     regularWashPrice: 25,
     expressWashPrice: 50,
     dryCleanPrice: 100,
-    
+
     // Utility Settings
     electricityRate: 9,
     waterRate: 10,
@@ -131,7 +137,7 @@ export default function Settings() {
   };
 
   const updateSetting = (key: string, value: any) => {
-    setSettings(prev => ({ ...prev, [key]: value }));
+    setSettings((prev) => ({ ...prev, [key]: value }));
   };
 
   return (
@@ -151,7 +157,11 @@ export default function Settings() {
       </div>
 
       {/* Settings Tabs */}
-      <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
+      <Tabs
+        value={activeTab}
+        onValueChange={setActiveTab}
+        className="space-y-6"
+      >
         <TabsList className="grid w-full grid-cols-6">
           <TabsTrigger value="general" className="gap-2">
             <Building2 className="h-4 w-4" />
@@ -198,7 +208,9 @@ export default function Settings() {
                   <Input
                     id="hostelName"
                     value={settings.hostelName}
-                    onChange={(e) => updateSetting('hostelName', e.target.value)}
+                    onChange={(e) =>
+                      updateSetting("hostelName", e.target.value)
+                    }
                     placeholder="Enter hostel name"
                   />
                 </div>
@@ -207,7 +219,9 @@ export default function Settings() {
                   <Input
                     id="contactPhone"
                     value={settings.contactPhone}
-                    onChange={(e) => updateSetting('contactPhone', e.target.value)}
+                    onChange={(e) =>
+                      updateSetting("contactPhone", e.target.value)
+                    }
                     placeholder="Enter contact phone"
                   />
                 </div>
@@ -218,7 +232,9 @@ export default function Settings() {
                 <Textarea
                   id="hostelAddress"
                   value={settings.hostelAddress}
-                  onChange={(e) => updateSetting('hostelAddress', e.target.value)}
+                  onChange={(e) =>
+                    updateSetting("hostelAddress", e.target.value)
+                  }
                   placeholder="Enter complete address"
                   className="min-h-[80px]"
                 />
@@ -231,21 +247,32 @@ export default function Settings() {
                     id="contactEmail"
                     type="email"
                     value={settings.contactEmail}
-                    onChange={(e) => updateSetting('contactEmail', e.target.value)}
+                    onChange={(e) =>
+                      updateSetting("contactEmail", e.target.value)
+                    }
                     placeholder="Enter contact email"
                   />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="timezone">Timezone</Label>
-                  <Select value={settings.timezone} onValueChange={(value) => updateSetting('timezone', value)}>
+                  <Select
+                    value={settings.timezone}
+                    onValueChange={(value) => updateSetting("timezone", value)}
+                  >
                     <SelectTrigger>
                       <SelectValue placeholder="Select timezone" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="Asia/Kolkata">Asia/Kolkata (IST)</SelectItem>
+                      <SelectItem value="Asia/Kolkata">
+                        Asia/Kolkata (IST)
+                      </SelectItem>
                       <SelectItem value="UTC">UTC</SelectItem>
-                      <SelectItem value="America/New_York">America/New_York (EST)</SelectItem>
-                      <SelectItem value="Europe/London">Europe/London (GMT)</SelectItem>
+                      <SelectItem value="America/New_York">
+                        America/New_York (EST)
+                      </SelectItem>
+                      <SelectItem value="Europe/London">
+                        Europe/London (GMT)
+                      </SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -254,7 +281,10 @@ export default function Settings() {
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="currency">Currency</Label>
-                  <Select value={settings.currency} onValueChange={(value) => updateSetting('currency', value)}>
+                  <Select
+                    value={settings.currency}
+                    onValueChange={(value) => updateSetting("currency", value)}
+                  >
                     <SelectTrigger>
                       <SelectValue placeholder="Select currency" />
                     </SelectTrigger>
@@ -268,7 +298,10 @@ export default function Settings() {
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="language">Language</Label>
-                  <Select value={settings.language} onValueChange={(value) => updateSetting('language', value)}>
+                  <Select
+                    value={settings.language}
+                    onValueChange={(value) => updateSetting("language", value)}
+                  >
                     <SelectTrigger>
                       <SelectValue placeholder="Select language" />
                     </SelectTrigger>
@@ -282,8 +315,15 @@ export default function Settings() {
                 </div>
               </div>
 
-              <Button onClick={() => handleSave('general')} disabled={isLoading}>
-                {isLoading ? <RefreshCw className="h-4 w-4 mr-2 animate-spin" /> : <Save className="h-4 w-4 mr-2" />}
+              <Button
+                onClick={() => handleSave("general")}
+                disabled={isLoading}
+              >
+                {isLoading ? (
+                  <RefreshCw className="h-4 w-4 mr-2 animate-spin" />
+                ) : (
+                  <Save className="h-4 w-4 mr-2" />
+                )}
                 Save General Settings
               </Button>
             </CardContent>
@@ -316,7 +356,9 @@ export default function Settings() {
                   </div>
                   <Switch
                     checked={settings.emailNotifications}
-                    onCheckedChange={(checked) => updateSetting('emailNotifications', checked)}
+                    onCheckedChange={(checked) =>
+                      updateSetting("emailNotifications", checked)
+                    }
                   />
                 </div>
 
@@ -334,7 +376,9 @@ export default function Settings() {
                   </div>
                   <Switch
                     checked={settings.smsNotifications}
-                    onCheckedChange={(checked) => updateSetting('smsNotifications', checked)}
+                    onCheckedChange={(checked) =>
+                      updateSetting("smsNotifications", checked)
+                    }
                   />
                 </div>
 
@@ -352,7 +396,9 @@ export default function Settings() {
                   </div>
                   <Switch
                     checked={settings.pushNotifications}
-                    onCheckedChange={(checked) => updateSetting('pushNotifications', checked)}
+                    onCheckedChange={(checked) =>
+                      updateSetting("pushNotifications", checked)
+                    }
                   />
                 </div>
 
@@ -362,15 +408,20 @@ export default function Settings() {
                   <div className="space-y-0.5">
                     <div className="flex items-center gap-2">
                       <Users className="h-4 w-4" />
-                      <Label className="text-base">Tenant Activity Notifications</Label>
+                      <Label className="text-base">
+                        Tenant Activity Notifications
+                      </Label>
                     </div>
                     <p className="text-sm text-muted-foreground">
-                      Get notified about tenant check-ins, check-outs, and requests
+                      Get notified about tenant check-ins, check-outs, and
+                      requests
                     </p>
                   </div>
                   <Switch
                     checked={settings.tenantNotifications}
-                    onCheckedChange={(checked) => updateSetting('tenantNotifications', checked)}
+                    onCheckedChange={(checked) =>
+                      updateSetting("tenantNotifications", checked)
+                    }
                   />
                 </div>
 
@@ -388,7 +439,9 @@ export default function Settings() {
                   </div>
                   <Switch
                     checked={settings.paymentReminders}
-                    onCheckedChange={(checked) => updateSetting('paymentReminders', checked)}
+                    onCheckedChange={(checked) =>
+                      updateSetting("paymentReminders", checked)
+                    }
                   />
                 </div>
 
@@ -406,13 +459,22 @@ export default function Settings() {
                   </div>
                   <Switch
                     checked={settings.maintenanceAlerts}
-                    onCheckedChange={(checked) => updateSetting('maintenanceAlerts', checked)}
+                    onCheckedChange={(checked) =>
+                      updateSetting("maintenanceAlerts", checked)
+                    }
                   />
                 </div>
               </div>
 
-              <Button onClick={() => handleSave('notifications')} disabled={isLoading}>
-                {isLoading ? <RefreshCw className="h-4 w-4 mr-2 animate-spin" /> : <Save className="h-4 w-4 mr-2" />}
+              <Button
+                onClick={() => handleSave("notifications")}
+                disabled={isLoading}
+              >
+                {isLoading ? (
+                  <RefreshCw className="h-4 w-4 mr-2 animate-spin" />
+                ) : (
+                  <Save className="h-4 w-4 mr-2" />
+                )}
                 Save Notification Settings
               </Button>
             </CardContent>
@@ -437,7 +499,9 @@ export default function Settings() {
                   <div className="space-y-0.5">
                     <div className="flex items-center gap-2">
                       <Lock className="h-4 w-4" />
-                      <Label className="text-base">Two-Factor Authentication</Label>
+                      <Label className="text-base">
+                        Two-Factor Authentication
+                      </Label>
                     </div>
                     <p className="text-sm text-muted-foreground">
                       Require 2FA for admin login
@@ -445,7 +509,9 @@ export default function Settings() {
                   </div>
                   <Switch
                     checked={settings.twoFactorAuth}
-                    onCheckedChange={(checked) => updateSetting('twoFactorAuth', checked)}
+                    onCheckedChange={(checked) =>
+                      updateSetting("twoFactorAuth", checked)
+                    }
                   />
                 </div>
 
@@ -453,12 +519,19 @@ export default function Settings() {
 
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="sessionTimeout">Session Timeout (minutes)</Label>
+                    <Label htmlFor="sessionTimeout">
+                      Session Timeout (minutes)
+                    </Label>
                     <Input
                       id="sessionTimeout"
                       type="number"
                       value={settings.sessionTimeout}
-                      onChange={(e) => updateSetting('sessionTimeout', parseInt(e.target.value))}
+                      onChange={(e) =>
+                        updateSetting(
+                          "sessionTimeout",
+                          parseInt(e.target.value),
+                        )
+                      }
                       placeholder="Enter session timeout"
                     />
                   </div>
@@ -468,7 +541,9 @@ export default function Settings() {
                       id="loginAttempts"
                       type="number"
                       value={settings.loginAttempts}
-                      onChange={(e) => updateSetting('loginAttempts', parseInt(e.target.value))}
+                      onChange={(e) =>
+                        updateSetting("loginAttempts", parseInt(e.target.value))
+                      }
                       placeholder="Enter max attempts"
                     />
                   </div>
@@ -480,7 +555,9 @@ export default function Settings() {
                     id="passwordExpiry"
                     type="number"
                     value={settings.passwordExpiry}
-                    onChange={(e) => updateSetting('passwordExpiry', parseInt(e.target.value))}
+                    onChange={(e) =>
+                      updateSetting("passwordExpiry", parseInt(e.target.value))
+                    }
                     placeholder="Enter password expiry days"
                     className="w-full"
                   />
@@ -501,8 +578,15 @@ export default function Settings() {
                 </div>
               </div>
 
-              <Button onClick={() => handleSave('security')} disabled={isLoading}>
-                {isLoading ? <RefreshCw className="h-4 w-4 mr-2 animate-spin" /> : <Save className="h-4 w-4 mr-2" />}
+              <Button
+                onClick={() => handleSave("security")}
+                disabled={isLoading}
+              >
+                {isLoading ? (
+                  <RefreshCw className="h-4 w-4 mr-2 animate-spin" />
+                ) : (
+                  <Save className="h-4 w-4 mr-2" />
+                )}
                 Save Security Settings
               </Button>
             </CardContent>
@@ -516,7 +600,9 @@ export default function Settings() {
             <Card>
               <CardHeader>
                 <CardTitle>Room Pricing</CardTitle>
-                <CardDescription>Default pricing for rooms and deposits</CardDescription>
+                <CardDescription>
+                  Default pricing for rooms and deposits
+                </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="space-y-2">
@@ -525,17 +611,26 @@ export default function Settings() {
                     id="defaultRent"
                     type="number"
                     value={settings.defaultRent}
-                    onChange={(e) => updateSetting('defaultRent', parseInt(e.target.value))}
+                    onChange={(e) =>
+                      updateSetting("defaultRent", parseInt(e.target.value))
+                    }
                     placeholder="Enter default rent"
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="securityDepositMultiplier">Security Deposit Multiplier</Label>
+                  <Label htmlFor="securityDepositMultiplier">
+                    Security Deposit Multiplier
+                  </Label>
                   <Input
                     id="securityDepositMultiplier"
                     type="number"
                     value={settings.securityDepositMultiplier}
-                    onChange={(e) => updateSetting('securityDepositMultiplier', parseInt(e.target.value))}
+                    onChange={(e) =>
+                      updateSetting(
+                        "securityDepositMultiplier",
+                        parseInt(e.target.value),
+                      )
+                    }
                     placeholder="Enter multiplier"
                   />
                   <p className="text-sm text-muted-foreground">
@@ -548,7 +643,9 @@ export default function Settings() {
                     id="latePaymentFee"
                     type="number"
                     value={settings.latePaymentFee}
-                    onChange={(e) => updateSetting('latePaymentFee', parseInt(e.target.value))}
+                    onChange={(e) =>
+                      updateSetting("latePaymentFee", parseInt(e.target.value))
+                    }
                     placeholder="Enter late fee"
                   />
                 </div>
@@ -559,7 +656,9 @@ export default function Settings() {
             <Card>
               <CardHeader>
                 <CardTitle>Meal Pricing</CardTitle>
-                <CardDescription>Pricing for different meal options</CardDescription>
+                <CardDescription>
+                  Pricing for different meal options
+                </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="space-y-2">
@@ -568,7 +667,9 @@ export default function Settings() {
                     id="breakfastPrice"
                     type="number"
                     value={settings.breakfastPrice}
-                    onChange={(e) => updateSetting('breakfastPrice', parseInt(e.target.value))}
+                    onChange={(e) =>
+                      updateSetting("breakfastPrice", parseInt(e.target.value))
+                    }
                     placeholder="Enter breakfast price"
                   />
                 </div>
@@ -578,7 +679,9 @@ export default function Settings() {
                     id="lunchPrice"
                     type="number"
                     value={settings.lunchPrice}
-                    onChange={(e) => updateSetting('lunchPrice', parseInt(e.target.value))}
+                    onChange={(e) =>
+                      updateSetting("lunchPrice", parseInt(e.target.value))
+                    }
                     placeholder="Enter lunch price"
                   />
                 </div>
@@ -588,7 +691,9 @@ export default function Settings() {
                     id="dinnerPrice"
                     type="number"
                     value={settings.dinnerPrice}
-                    onChange={(e) => updateSetting('dinnerPrice', parseInt(e.target.value))}
+                    onChange={(e) =>
+                      updateSetting("dinnerPrice", parseInt(e.target.value))
+                    }
                     placeholder="Enter dinner price"
                   />
                 </div>
@@ -608,7 +713,12 @@ export default function Settings() {
                     id="regularWashPrice"
                     type="number"
                     value={settings.regularWashPrice}
-                    onChange={(e) => updateSetting('regularWashPrice', parseInt(e.target.value))}
+                    onChange={(e) =>
+                      updateSetting(
+                        "regularWashPrice",
+                        parseInt(e.target.value),
+                      )
+                    }
                     placeholder="Enter regular wash price"
                   />
                 </div>
@@ -618,7 +728,12 @@ export default function Settings() {
                     id="expressWashPrice"
                     type="number"
                     value={settings.expressWashPrice}
-                    onChange={(e) => updateSetting('expressWashPrice', parseInt(e.target.value))}
+                    onChange={(e) =>
+                      updateSetting(
+                        "expressWashPrice",
+                        parseInt(e.target.value),
+                      )
+                    }
                     placeholder="Enter express wash price"
                   />
                 </div>
@@ -628,7 +743,9 @@ export default function Settings() {
                     id="dryCleanPrice"
                     type="number"
                     value={settings.dryCleanPrice}
-                    onChange={(e) => updateSetting('dryCleanPrice', parseInt(e.target.value))}
+                    onChange={(e) =>
+                      updateSetting("dryCleanPrice", parseInt(e.target.value))
+                    }
                     placeholder="Enter dry clean price"
                   />
                 </div>
@@ -639,16 +756,22 @@ export default function Settings() {
             <Card>
               <CardHeader>
                 <CardTitle>Utility Rates</CardTitle>
-                <CardDescription>Pricing for utilities and services</CardDescription>
+                <CardDescription>
+                  Pricing for utilities and services
+                </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="space-y-2">
-                  <Label htmlFor="electricityRate">Electricity Rate (₹/kWh)</Label>
+                  <Label htmlFor="electricityRate">
+                    Electricity Rate (₹/kWh)
+                  </Label>
                   <Input
                     id="electricityRate"
                     type="number"
                     value={settings.electricityRate}
-                    onChange={(e) => updateSetting('electricityRate', parseInt(e.target.value))}
+                    onChange={(e) =>
+                      updateSetting("electricityRate", parseInt(e.target.value))
+                    }
                     placeholder="Enter electricity rate"
                   />
                 </div>
@@ -658,7 +781,9 @@ export default function Settings() {
                     id="waterRate"
                     type="number"
                     value={settings.waterRate}
-                    onChange={(e) => updateSetting('waterRate', parseInt(e.target.value))}
+                    onChange={(e) =>
+                      updateSetting("waterRate", parseInt(e.target.value))
+                    }
                     placeholder="Enter water rate"
                   />
                 </div>
@@ -667,7 +792,9 @@ export default function Settings() {
                   <Input
                     id="internetSpeed"
                     value={settings.internetSpeed}
-                    onChange={(e) => updateSetting('internetSpeed', e.target.value)}
+                    onChange={(e) =>
+                      updateSetting("internetSpeed", e.target.value)
+                    }
                     placeholder="Enter internet speed"
                   />
                 </div>
@@ -675,8 +802,16 @@ export default function Settings() {
             </Card>
           </div>
 
-          <Button onClick={() => handleSave('pricing')} disabled={isLoading} className="w-full">
-            {isLoading ? <RefreshCw className="h-4 w-4 mr-2 animate-spin" /> : <Save className="h-4 w-4 mr-2" />}
+          <Button
+            onClick={() => handleSave("pricing")}
+            disabled={isLoading}
+            className="w-full"
+          >
+            {isLoading ? (
+              <RefreshCw className="h-4 w-4 mr-2 animate-spin" />
+            ) : (
+              <Save className="h-4 w-4 mr-2" />
+            )}
             Save Pricing Settings
           </Button>
         </TabsContent>
@@ -704,13 +839,20 @@ export default function Settings() {
                   </div>
                   <Switch
                     checked={settings.autoBackup}
-                    onCheckedChange={(checked) => updateSetting('autoBackup', checked)}
+                    onCheckedChange={(checked) =>
+                      updateSetting("autoBackup", checked)
+                    }
                   />
                 </div>
 
                 <div className="space-y-2">
                   <Label htmlFor="backupFrequency">Backup Frequency</Label>
-                  <Select value={settings.backupFrequency} onValueChange={(value) => updateSetting('backupFrequency', value)}>
+                  <Select
+                    value={settings.backupFrequency}
+                    onValueChange={(value) =>
+                      updateSetting("backupFrequency", value)
+                    }
+                  >
                     <SelectTrigger>
                       <SelectValue placeholder="Select frequency" />
                     </SelectTrigger>
@@ -723,7 +865,11 @@ export default function Settings() {
                 </div>
 
                 <div className="flex gap-2">
-                  <Button onClick={handleBackup} variant="outline" className="gap-2">
+                  <Button
+                    onClick={handleBackup}
+                    variant="outline"
+                    className="gap-2"
+                  >
                     <Download className="h-4 w-4" />
                     Create Backup
                   </Button>
@@ -738,7 +884,9 @@ export default function Settings() {
                       <AlertDialogHeader>
                         <AlertDialogTitle>Restore from Backup</AlertDialogTitle>
                         <AlertDialogDescription>
-                          This will restore your system to a previous backup. All current data will be replaced. Are you sure you want to continue?
+                          This will restore your system to a previous backup.
+                          All current data will be replaced. Are you sure you
+                          want to continue?
                         </AlertDialogDescription>
                       </AlertDialogHeader>
                       <AlertDialogFooter>
@@ -773,7 +921,9 @@ export default function Settings() {
                   </div>
                   <Switch
                     checked={settings.darkMode}
-                    onCheckedChange={(checked) => updateSetting('darkMode', checked)}
+                    onCheckedChange={(checked) =>
+                      updateSetting("darkMode", checked)
+                    }
                   />
                 </div>
 
@@ -783,7 +933,9 @@ export default function Settings() {
                     id="dataRetention"
                     type="number"
                     value={settings.dataRetention}
-                    onChange={(e) => updateSetting('dataRetention', parseInt(e.target.value))}
+                    onChange={(e) =>
+                      updateSetting("dataRetention", parseInt(e.target.value))
+                    }
                     placeholder="Enter retention period"
                   />
                   <p className="text-sm text-muted-foreground">
@@ -804,27 +956,43 @@ export default function Settings() {
             <CardContent>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <div className="space-y-2">
-                  <Label className="text-sm text-muted-foreground">Version</Label>
+                  <Label className="text-sm text-muted-foreground">
+                    Version
+                  </Label>
                   <div className="font-medium">v1.0.0</div>
                 </div>
                 <div className="space-y-2">
-                  <Label className="text-sm text-muted-foreground">Last Backup</Label>
+                  <Label className="text-sm text-muted-foreground">
+                    Last Backup
+                  </Label>
                   <div className="font-medium">2024-03-15 08:30</div>
                 </div>
                 <div className="space-y-2">
-                  <Label className="text-sm text-muted-foreground">Database Size</Label>
+                  <Label className="text-sm text-muted-foreground">
+                    Database Size
+                  </Label>
                   <div className="font-medium">45.2 MB</div>
                 </div>
                 <div className="space-y-2">
-                  <Label className="text-sm text-muted-foreground">Uptime</Label>
+                  <Label className="text-sm text-muted-foreground">
+                    Uptime
+                  </Label>
                   <div className="font-medium">7 days, 14 hours</div>
                 </div>
               </div>
             </CardContent>
           </Card>
 
-          <Button onClick={() => handleSave('system')} disabled={isLoading} className="w-full">
-            {isLoading ? <RefreshCw className="h-4 w-4 mr-2 animate-spin" /> : <Save className="h-4 w-4 mr-2" />}
+          <Button
+            onClick={() => handleSave("system")}
+            disabled={isLoading}
+            className="w-full"
+          >
+            {isLoading ? (
+              <RefreshCw className="h-4 w-4 mr-2 animate-spin" />
+            ) : (
+              <Save className="h-4 w-4 mr-2" />
+            )}
             Save System Settings
           </Button>
         </TabsContent>
@@ -850,12 +1018,16 @@ export default function Settings() {
                     </div>
                     <div>
                       <div className="font-medium">Admin User</div>
-                      <div className="text-sm text-muted-foreground">admin@hostelpro.com</div>
+                      <div className="text-sm text-muted-foreground">
+                        admin@hostelpro.com
+                      </div>
                     </div>
                   </div>
                   <div className="flex items-center space-x-2">
                     <Badge>Super Admin</Badge>
-                    <Button variant="outline" size="sm">Edit</Button>
+                    <Button variant="outline" size="sm">
+                      Edit
+                    </Button>
                   </div>
                 </div>
 
