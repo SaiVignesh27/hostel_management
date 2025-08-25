@@ -162,6 +162,12 @@ export default function TenantLayout({ children }: TenantLayoutProps) {
                   <span>Help & Support</span>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
+                <DropdownMenuItem asChild>
+                  <Link to="/dashboard">
+                    <Home className="mr-2 h-4 w-4" />
+                    <span>Admin Portal</span>
+                  </Link>
+                </DropdownMenuItem>
                 <DropdownMenuItem>
                   <LogOut className="mr-2 h-4 w-4" />
                   <span>Log out</span>
