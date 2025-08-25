@@ -85,6 +85,68 @@ const App = () => (
             }
           />
 
+          {/* Tenant Portal Routes */}
+          <Route
+            path="/tenant/dashboard"
+            element={
+              <TenantLayout>
+                <TenantDashboard />
+              </TenantLayout>
+            }
+          />
+          <Route
+            path="/tenant/payments"
+            element={
+              <TenantLayout>
+                <PlaceholderPage
+                  title="Payment Portal"
+                  description="View bills, payment history, and make online payments"
+                />
+              </TenantLayout>
+            }
+          />
+          <Route
+            path="/tenant/meals"
+            element={
+              <TenantLayout>
+                <PlaceholderPage
+                  title="Meal Management"
+                  description="Manage meal preferences, view menu, and track consumption"
+                />
+              </TenantLayout>
+            }
+          />
+          <Route
+            path="/tenant/laundry"
+            element={
+              <TenantLayout>
+                <PlaceholderPage
+                  title="Laundry Services"
+                  description="Request laundry services and track orders"
+                />
+              </TenantLayout>
+            }
+          />
+          <Route
+            path="/tenant/requests"
+            element={
+              <TenantLayout>
+                <TenantRequests />
+              </TenantLayout>
+            }
+          />
+          <Route
+            path="/tenant/profile"
+            element={
+              <TenantLayout>
+                <PlaceholderPage
+                  title="My Profile"
+                  description="View and edit your personal information and preferences"
+                />
+              </TenantLayout>
+            }
+          />
+
           {/* Catch-all route */}
           <Route path="*" element={<NotFound />} />
         </Routes>
