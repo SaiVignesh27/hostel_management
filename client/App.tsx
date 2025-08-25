@@ -13,6 +13,7 @@ import TenantRegistration from "./pages/TenantRegistration";
 import RoomManagement from "./pages/RoomManagement";
 import FacilitiesManagement from "./pages/FacilitiesManagement";
 import ReportsAnalytics from "./pages/ReportsAnalytics";
+import Settings from "./pages/Settings";
 import MainLayout from "./components/layout/MainLayout";
 import PlaceholderPage from "./components/PlaceholderPage";
 import NotFound from "./pages/NotFound";
