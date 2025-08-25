@@ -99,14 +99,19 @@ export default function TenantLayout({ children }: TenantLayoutProps) {
           {/* Navigation */}
           <nav className="hidden md:flex items-center space-x-6">
             {navigationItems.map((item) => (
-              <a
+              <Link
                 key={item.href}
-                href={item.href}
-                className="flex items-center space-x-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                to={item.href}
+                className={cn(
+                  "flex items-center space-x-2 text-sm font-medium transition-colors",
+                  location.pathname === item.href
+                    ? "text-foreground"
+                    : "text-muted-foreground hover:text-foreground"
+                )}
               >
                 <item.icon className="h-4 w-4" />
                 <span>{item.title}</span>
-              </a>
+              </Link>
             ))}
           </nav>
 
