@@ -119,6 +119,9 @@ export default function MainLayout({ children }: MainLayoutProps) {
                   <h1 className="text-lg font-semibold">Hostel Management</h1>
                 </div>
                 <div className="flex items-center gap-2">
+                  <Button variant="outline" size="sm" asChild>
+                    <a href="/tenant/dashboard">Tenant Portal</a>
+                  </Button>
                   <Button variant="outline" size="sm">
                     Admin
                   </Button>
