@@ -77,10 +77,7 @@ const App = () => (
             path="/settings"
             element={
               <MainLayout>
-                <PlaceholderPage
-                  title="Settings"
-                  description="System configuration and administrative settings"
-                />
+                <Settings />
               </MainLayout>
             }
           />
