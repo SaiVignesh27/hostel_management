@@ -46,14 +46,18 @@ export default function Login() {
 
   const onSubmit = async (data: LoginForm) => {
     setIsLoading(true);
-    
+
     // Simulate API call
     setTimeout(() => {
       console.log("Login attempt:", { ...data, userType: activeTab });
       setIsLoading(false);
-      
-      // Navigate to dashboard after successful login
-      navigate("/dashboard");
+
+      // Navigate based on user type
+      if (activeTab === "admin") {
+        navigate("/dashboard");
+      } else {
+        navigate("/tenant/dashboard");
+      }
     }, 1000);
   };
 
