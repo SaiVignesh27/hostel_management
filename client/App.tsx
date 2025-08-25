@@ -14,7 +14,10 @@ import RoomManagement from "./pages/RoomManagement";
 import FacilitiesManagement from "./pages/FacilitiesManagement";
 import ReportsAnalytics from "./pages/ReportsAnalytics";
 import Settings from "./pages/Settings";
+import TenantDashboard from "./pages/TenantDashboard";
+import TenantRequests from "./pages/TenantRequests";
 import MainLayout from "./components/layout/MainLayout";
+import TenantLayout from "./components/layout/TenantLayout";
 import PlaceholderPage from "./components/PlaceholderPage";
 import NotFound from "./pages/NotFound";
 
