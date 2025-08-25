@@ -36,10 +36,7 @@ const App = () => (
             path="/tenants"
             element={
               <MainLayout>
-                <PlaceholderPage
-                  title="Tenant Management"
-                  description="Manage tenant registration, details, and room assignments"
-                />
+                <TenantManagement />
               </MainLayout>
             }
           />
@@ -47,10 +44,7 @@ const App = () => (
             path="/tenants/new"
             element={
               <MainLayout>
-                <PlaceholderPage
-                  title="Add New Tenant"
-                  description="Register a new tenant with personal details and document uploads"
-                />
+                <TenantRegistration />
               </MainLayout>
             }
           />
@@ -58,10 +52,7 @@ const App = () => (
             path="/rooms"
             element={
               <MainLayout>
-                <PlaceholderPage
-                  title="Room Management"
-                  description="CRUD operations for rooms, availability tracking, and room assignments"
-                />
+                <RoomManagement />
               </MainLayout>
             }
           />
@@ -69,10 +60,7 @@ const App = () => (
             path="/facilities"
             element={
               <MainLayout>
-                <PlaceholderPage
-                  title="Facilities Management"
-                  description="Manage meals, laundry services, and utility tracking"
-                />
+                <FacilitiesManagement />
               </MainLayout>
             }
           />
@@ -80,10 +68,7 @@ const App = () => (
             path="/reports"
             element={
               <MainLayout>
-                <PlaceholderPage
-                  title="Reports & Analytics"
-                  description="View room availability reports, utility usage charts, and analytics"
-                />
+                <ReportsAnalytics />
               </MainLayout>
             }
           />
